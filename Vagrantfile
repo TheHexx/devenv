@@ -66,8 +66,13 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
     sudo yum update - y
-    sudo yum install vim -y
-    sudo yum install epel-release -y
-    sudo yum install nodejs npm express mustache -y
+    sudo yum install vim git -y
+    git clone https://github.com/VundleVim/Vundle.vim.git /home/vagrant/.vim/bundle/Vundle.vim
+    sudo chown -R vagrant:vagrant /home/vagrant/.vim
+    curl -o .vimrc https://raw.githubusercontent.com/TheHexx/devenv/master/.vimrc
+    sudo vim +PluginInstall +qall
   SHELL
+	
+    # sudo yum install epel-release -y
+    # sudo yum install nodejs npm express mustache -y
 end
