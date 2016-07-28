@@ -11,8 +11,10 @@ call vundle#end()
 
 filetype plugin indent on
 syntax on
-set number
 
+let g:airline_powerline_fonts = 1
+let g:airline_theme = badwolf
+set number
 set so=7
 set ruler
 set cmdheight=2
