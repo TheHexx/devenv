@@ -6,16 +6,11 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'raimondi/delimitmate'
 Plugin 'tpope/vim-fugitive'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 call vundle#end()
 
 filetype plugin indent on
 syntax on
 
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'badwolf'
-let g:airline#extensions#tabline#enabled = 1
 set number
 set so=7
 set ruler
