@@ -71,7 +71,4 @@ Vagrant.configure("2") do |config|
     sudo chown -R vagrant:vagrant /home/vagrant/.vim
     curl -o .vimrc https://raw.githubusercontent.com/TheHexx/devenv/master/.vimrc
   SHELL
-	
-    # sudo yum install epel-release -y
-    # sudo yum install nodejs npm express mustache -y
 end
