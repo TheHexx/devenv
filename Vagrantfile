@@ -23,6 +23,11 @@ Vagrant.configure("2") do |config|
   # accessing "localhost:8080" will access port 80 on the guest machine.
   config.vm.network "forwarded_port", guest: 3000, host: 8080
 
+  # Ensures host VPN still works inside Virtual Machine 
+  config.vm.provider :virtualbox do | vb |
+    vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on" ]
+  end
+
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
   # config.vm.network "private_network", ip: "192.168.33.10"
@@ -67,6 +72,8 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     sudo yum update - y
     sudo yum install vim git docker -y
+    sudo yum install epel-release
+    sudo yum install nodejs npm
     git clone https://github.com/VundleVim/Vundle.vim.git /home/vagrant/.vim/bundle/Vundle.vim
     sudo chown -R vagrant:vagrant /home/vagrant/.vim
     curl -o .vimrc https://raw.githubusercontent.com/TheHexx/devenv/master/.vimrc
