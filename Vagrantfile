@@ -77,5 +77,8 @@ Vagrant.configure("2") do |config|
     git clone https://github.com/VundleVim/Vundle.vim.git /home/vagrant/.vim/bundle/Vundle.vim
     sudo chown -R vagrant:vagrant /home/vagrant/.vim
     curl -o .vimrc https://raw.githubusercontent.com/TheHexx/devenv/master/.vimrc
+    sudo groupadd docker
+    sudo usermod -aG docker vagrant
+    sudo service docker start
   SHELL
 end
