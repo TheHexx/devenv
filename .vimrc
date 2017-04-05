@@ -24,7 +24,7 @@ set softtabstop=2
 set lbr
 set t_Co=256
 set tw=500
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 let g:airline_powerline_fonts = 1
 set laststatus=2
 
