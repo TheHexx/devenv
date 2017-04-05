@@ -7,9 +7,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-airline/vim-airline'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
-Plugin 'Valloric/YouCompleteMe'
 call vundle#end()
 filetype plugin indent on
 syntax on
