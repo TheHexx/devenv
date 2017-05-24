@@ -1,12 +1,13 @@
 "---- VUNDLE PLUGINS
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'vim-airline/vim-airline'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'pangloss/vim-javascript'
-Plugin 'scrooloose/syntastic'
+Plugin 'VundleVim/Vundle.vim'       "Plugin Manager
+Plugin 'scrooloose/nerdtree'        "File navigator
+Plugin 'vim-airline/vim-airline'    "Improved status bar
+Plugin 'flazz/vim-colorschemes'     "Additional colour schemes
+Plugin 'pangloss/vim-javascript'    "Better Syntax Hilighting for Javascript
+Plugin 'scrooloose/syntastic'       "Linting Plugin
+Plugin 'Raimondi/delimitMate'       "Auto closes paired delimeters
 
 call vundle#end()
 
@@ -80,7 +81,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['jshint'] " Need to 'npm install -g jshint' for this to work !
 
 "---- KEY MAPPINGS
-map <C-n> :NERDTreeToggle<CR>   "       <CTRL-N> Opens/Closes NERDTree
-nnoremap <C-l> :SyntasticToggleMode<CR>  "   <CTRL-J> Turns linting on and off
-nnoremap <space> za             " <space> opens/closes folds
+map <C-n> :NERDTreeToggle<CR>               "<CTRL-N> Opens/Closes NERDTree
+nnoremap <C-l> :SyntasticToggleMode<CR>     "<CTRL-J> Turns linting on and off
+nnoremap <space> za                         "<space> opens/closes folds
 
