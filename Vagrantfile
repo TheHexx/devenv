@@ -24,9 +24,11 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 1313, host: 1313
   config.vm.network "forwarded_port", guest: 4567, host: 4567
   config.vm.network "forwarded_port", guest: 8080, host: 8080
+
   config.vm.network "forwarded_port", guest: 5000, host: 5000
 
-
+  config.ssh.private_key_path = "~/.ssh/id_rsa"
+  config.ssh.forward_agent = true
 
   # Ensures host VPN still works inside Virtual Machine 
   config.vm.provider :virtualbox do | vb |
@@ -80,7 +82,15 @@ Vagrant.configure("2") do |config|
     sudo yum install vim git docker -y
     sudo yum install epel-release -y
     sudo yum install nodejs npm -y
+    sudo yum install automake gcc gcc-c++ kernel-devel cmake
+    sudo yum install python-devel python3-devel
     git clone https://github.com/VundleVim/Vundle.vim.git /home/vagrant/.vim/bundle/Vundle.vim
+    vim +PluginInstall +qall
+    cd ~/.vim/bundle/YouCompleteMe
+    ./install.py --tern-completer
+    cd ~/.vim/bundle/tern_for_vim
+    npm install 
+    sudo npm install -g jshint
     sudo chown -R vagrant:vagrant /home/vagrant/.vim
     curl -o .vimrc https://raw.githubusercontent.com/TheHexx/devenv/master/.vimrc
     sudo groupadd docker
