@@ -46,14 +46,14 @@ set ignorecase      "ignore case...
 set smartcase       "unless capitals used
 
 "---- FOLDING BEHAVIOUR
-set foldenable          "enable folding
-set foldlevelstart=10   "open most folds by default
+set nofoldenable        "disable folding on file load
+set foldlevelstart=10   "max unfold on start
 set foldnestmax=10      "10 nested folds max
 set foldmethod=indent   "base folds on indent level"
 
 "---- TABBING BEHAVIOUR
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 set smarttab
 
