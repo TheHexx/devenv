@@ -8,7 +8,8 @@ Plugin 'flazz/vim-colorschemes'     "Additional colour schemes
 Plugin 'pangloss/vim-javascript'    "Better Syntax Hilighting for Javascript
 Plugin 'scrooloose/syntastic'       "Linting Plugin
 Plugin 'Raimondi/delimitMate'       "Auto closes paired delimeters
-
+Plugin 'Valloric/YouCompleteMe'     "Auto completion  - needs: cd ~/.vim/bundle/YouCompleteMe && ./install.py --tern-completer 
+Plugin 'marijnh/tern_for_vim'       "Auto completion for javascript - needs: cd ~/.vim/bundle/tern_for_vim && npm install 
 call vundle#end()
 
 "---- FILETYPES AND SYNTAX
@@ -79,6 +80,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['jshint'] " Need to 'npm install -g jshint' for this to work !
+
+"---- PLUGIN SETUP: YOU COMPLETE ME AND TERN
 
 "---- KEY MAPPINGS
 map <C-n> :NERDTreeToggle<CR>               "<CTRL-N> Opens/Closes NERDTree
