@@ -14,7 +14,6 @@ Vagrant.configure("2") do |config|
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "centos/7"
 
-  config.ssh.forward_agent = true
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
@@ -26,11 +25,12 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 1313, host: 1313
   config.vm.network "forwarded_port", guest: 4567, host: 4567
   config.vm.network "forwarded_port", guest: 8080, host: 8080
-
   config.vm.network "forwarded_port", guest: 5000, host: 5000
 
-  config.ssh.private_key_path = "~/.ssh/id_rsa"
   config.ssh.forward_agent = true
+  config.ssh.insert_key = false
+  config.ssh.private_key_path = ["~/.ssh/id_rsa", "~/.vagrant.d/insecure_private_key"]
+  config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/authorized_keys"
 
   # Ensures host VPN still works inside Virtual Machine 
   config.vm.provider :virtualbox do | vb |
@@ -96,7 +96,7 @@ Vagrant.configure("2") do |config|
     sudo npm install -g jshint
     sudo chown -R vagrant:vagrant /home/vagrant/.vim
     curl -o .vimrc https://raw.githubusercontent.com/TheHexx/devenv/master/.vimrc
-    vim +PluginInstall +qall
+    vim +silent! +PluginInstall +qall
     sudo groupadd docker
     sudo usermod -aG docker vagrant
     sudo service docker start
