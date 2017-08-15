@@ -80,24 +80,18 @@ Vagrant.configure("2") do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
-    sudo yum update - y
-    sudo yum install vim git docker -y
-    sudo yum install epel-release -y
+    yum update -y
+    yum install vim git docker -y
+    groupadd docker
+    usermod -aG docker vagrant
+    systemctl start docker 
     curl --silent --location https://rpm.nodesource.com/setup_6.x | sudo bash -
-    sudo yum install nodejs npm -y
-    sudo yum install automake gcc gcc-c++ kernel-devel cmake
-    sudo yum install python-devel python3-devel
+    yum install nodejs -y
+    npm install -g jshint
     git clone https://github.com/VundleVim/Vundle.vim.git /home/vagrant/.vim/bundle/Vundle.vim
-    npm install 
-    sudo npm install -g jshint
-    sudo chown -R vagrant:vagrant /home/vagrant/.vim
-    curl -o .vimrc https://raw.githubusercontent.com/TheHexx/devenv/master/.vimrc
-    vim +PluginInstall +qall
-    cd ~/.vim/bundle/YouCompleteMe
-    ./install.py --tern-completer
-    cd ~/.vim/bundle/tern_for_vim
-    sudo groupadd docker
-    sudo usermod -aG docker vagrant
-    sudo service docker start
+    chown -R vagrant:vagrant /home/vagrant/.vim
+    curl -o /home/vagrant/.vimrc https://raw.githubusercontent.com/TheHexx/devenv/master/.vimrc
+    chown vagrant:vagrant /home/vagrant/.vimrc
+    su - vagrant -c 'vim +PluginInstall +qall'
   SHELL
 end

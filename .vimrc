@@ -8,8 +8,6 @@ Plugin 'flazz/vim-colorschemes'     "Additional colour schemes
 Plugin 'pangloss/vim-javascript'    "Better Syntax Hilighting for Javascript
 Plugin 'scrooloose/syntastic'       "Linting Plugin
 Plugin 'Raimondi/delimitMate'       "Auto closes paired delimeters
-Plugin 'Valloric/YouCompleteMe'     "Auto completion  - needs: cd ~/.vim/bundle/YouCompleteMe && ./install.py --tern-completer 
-Plugin 'marijnh/tern_for_vim'       "Auto completion for javascript - needs: cd ~/.vim/bundle/tern_for_vim && npm install 
 call vundle#end()
 
 "---- FILETYPES AND SYNTAX
