@@ -88,15 +88,14 @@ Vagrant.configure("2") do |config|
     sudo yum install automake gcc gcc-c++ kernel-devel cmake
     sudo yum install python-devel python3-devel
     git clone https://github.com/VundleVim/Vundle.vim.git /home/vagrant/.vim/bundle/Vundle.vim
-    vim +PluginInstall +qall
-    cd ~/.vim/bundle/YouCompleteMe
-    ./install.py --tern-completer
-    cd ~/.vim/bundle/tern_for_vim
     npm install 
     sudo npm install -g jshint
     sudo chown -R vagrant:vagrant /home/vagrant/.vim
     curl -o .vimrc https://raw.githubusercontent.com/TheHexx/devenv/master/.vimrc
-    vim +silent! +PluginInstall +qall
+    vim +PluginInstall +qall
+    cd ~/.vim/bundle/YouCompleteMe
+    ./install.py --tern-completer
+    cd ~/.vim/bundle/tern_for_vim
     sudo groupadd docker
     sudo usermod -aG docker vagrant
     sudo service docker start
