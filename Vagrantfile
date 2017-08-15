@@ -13,6 +13,8 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "centos/7"
+
+  config.ssh.forward_agent = true
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
@@ -81,6 +83,7 @@ Vagrant.configure("2") do |config|
     sudo yum update - y
     sudo yum install vim git docker -y
     sudo yum install epel-release -y
+    curl --silent --location https://rpm.nodesource.com/setup_6.x | sudo bash -
     sudo yum install nodejs npm -y
     sudo yum install automake gcc gcc-c++ kernel-devel cmake
     sudo yum install python-devel python3-devel
@@ -93,6 +96,7 @@ Vagrant.configure("2") do |config|
     sudo npm install -g jshint
     sudo chown -R vagrant:vagrant /home/vagrant/.vim
     curl -o .vimrc https://raw.githubusercontent.com/TheHexx/devenv/master/.vimrc
+    vim +PluginInstall +qall
     sudo groupadd docker
     sudo usermod -aG docker vagrant
     sudo service docker start
